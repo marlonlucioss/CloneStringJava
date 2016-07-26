@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class LetterPairSimilarity {
 	
-	static HttpURLConnectionExample http = new HttpURLConnectionExample();
 	
 	private static String[] letterPairs(String str) {
 		int numPairs;
@@ -34,15 +33,12 @@ public class LetterPairSimilarity {
 		return allPairs;
 	}
 	
-	private static String formatUrl(String url){
-		String convertedUrl = url.replace("/blob", "");
-	    return convertedUrl.replace("//", "//raw.");
-	}
+	
 
 	public static double compareStrings(String url1, String url2) throws Exception {
 		try {
-			ArrayList<?> pairs1 = wordLetterPairs(http.sendGet(formatUrl(url1)));
-			ArrayList<?> pairs2 = wordLetterPairs(http.sendGet(formatUrl(url2)));
+			ArrayList<?> pairs1 = wordLetterPairs(url1);
+			ArrayList<?> pairs2 = wordLetterPairs(url2);
 			
 			int intersection = 0;
 			int union = pairs1.size() + pairs2.size();
